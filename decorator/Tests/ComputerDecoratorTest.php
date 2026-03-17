@@ -16,15 +16,21 @@ class ComputerDecoratorTest extends TestCase
         $this->assertSame("A laptop computer", $laptop->getDescription());
     }
 
+
     public function testLaptopWithGPU()
     {
-        // TODO: faire le test
-        $this->assertSame(true, 1 === 1);
+        $laptop = new \App\Laptop();
+        $gpuLaptop = new \App\GPU($laptop);
+        $this->assertSame(600, $gpuLaptop->getPrice());
+        $this->assertSame("A laptop computer with GPU", $gpuLaptop->getDescription());
     }
+
 
     public function testLaptopWithOLEDScreen()
     {
-        // TODO: faire le test
-        $this->assertSame(false, 1 === 2);
+        $laptop = new \App\Laptop();
+        $oledLaptop = new \App\OLEDScreen($laptop);
+        $this->assertSame(550, $oledLaptop->getPrice());
+        $this->assertSame("A laptop computer with OLED screen", $oledLaptop->getDescription());
     }
 }
